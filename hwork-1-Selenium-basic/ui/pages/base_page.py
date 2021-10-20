@@ -5,7 +5,6 @@ from ui.locators.base_locators import BasePageLocators
 
 
 class BasePage:
-
     locators = BasePageLocators()
 
     def __init__(self, driver):
@@ -27,7 +26,3 @@ class BasePage:
         self.move_to_element(log_out)
         log_out.click()
         self.find(self.locators.h1)
-
-
-
-

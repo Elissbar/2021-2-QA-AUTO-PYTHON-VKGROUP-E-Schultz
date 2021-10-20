@@ -21,4 +21,3 @@ class TestSuite(BaseCase):
     def test_move_to_tab(self, login, tab, title):
         self.base_page.find(self.base_page.locators.tabs[tab]).click()
         assert self.base_page.wait(timeout=2).until(ES.title_is(title))
-

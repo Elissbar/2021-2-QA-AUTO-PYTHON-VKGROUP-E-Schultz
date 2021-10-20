@@ -9,7 +9,6 @@ def pytest_addoption(parser):
 @pytest.fixture
 def config(request):
     url = request.config.getoption("--url")
-
     return { 'url': url }
 
 
