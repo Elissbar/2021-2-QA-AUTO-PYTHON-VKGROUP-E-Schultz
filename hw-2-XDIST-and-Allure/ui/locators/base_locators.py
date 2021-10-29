@@ -9,7 +9,7 @@ class BasePageLocators:
         "submit": (By.XPATH, '//div[contains(@class, "authForm-module-button")]')
     }
     right_menu = (By.XPATH, '//div[contains(@class, "right-module-rightButton")]')
-    log_out = (By.XPATH, '//a[@href="/logout"]')
+    log_out = (By.XPATH, '//a[@href="/logout"]/..')
     tabs = {
         "dashboard": (By.XPATH, '//a[@href="/dashboard"]'),
         'segments': (By.XPATH, '//a[@href="/segments"]'),
@@ -20,5 +20,11 @@ class BasePageLocators:
         "tools": (By.XPATH, '//a[@href="/tools"]'),
         'help': (By.XPATH, '//a[@href="//target.my.com/help/advertisers/en"]')
     }
-    create_campaign_btn = (By.XPATH, '//a[@href="/campaign/new"]')
-    h1 = (By.XPATH, '//h1[contains(@class, "mainPage-module-helloVKTitle")]')
+
+    invalid_login_page = {
+        'error_message': (By.XPATH, '//div[contains(@class, "js_form_msg")]'),
+        'error_title': (By.XPATH, '//div[contains(@class, "title")]'),
+        'error_text': (By.XPATH, '//div[contains(@class, "text")]')
+    }
+
+    invalid_password = (By.XPATH, '//div[contains(@class, "notify-module-content")]')
