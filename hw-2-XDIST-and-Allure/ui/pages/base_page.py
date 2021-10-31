@@ -21,11 +21,10 @@ class BasePage:
         self.logger.info(f'{self.__class__.__name__} page is opening')
 
     def wait(self, timeout=10):
-        self.logger.info(f'Waiting an item. Timeout is: {timeout}')
         return WebDriverWait(self.driver, timeout)
 
     def find(self, locator, timeout=10):
-        self.logger.info(f'Find item with locator: {locator}')
+        self.logger.info(f'Find element: {locator}')
         return self.wait(timeout).until(ES.presence_of_element_located(locator))
 
     def move_to_element(self, element):
@@ -33,13 +32,8 @@ class BasePage:
         action = ActionChains(self.driver)
         return action.move_to_element(element).perform()
 
-    @allure.step('Logout')
-    def log_out(self):
-        self.click(self.locators.right_menu)
-        self.click(self.locators.log_out)
-
     def click(self, locator):
-        self.logger.info(f'Click on locator: {locator}')
+        self.logger.info(f'Click on element: {locator}')
         for i in range(CLICK_RETRY):
             try:
                 self.find(locator)

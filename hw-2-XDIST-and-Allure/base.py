@@ -4,7 +4,6 @@ from _pytest.fixtures import FixtureRequest
 from ui.pages.base_page import BasePage
 from ui.pages.login_page import LoginPage
 from faker import Faker
-import allure
 import time
 import pytest
 import os
@@ -18,12 +17,15 @@ class BaseCase:
         self.driver = driver
         self.logger = logger
 
+        self.logger.info('Get cookie')
         if self.authorize:
             cookies = request.getfixturevalue('cookies')
             for cookie in cookies:
                 self.driver.add_cookie(cookie)
             self.driver.refresh()
+        self.logger.info('Open browser')
         self.base_page = BasePage(driver=driver)
+
 
     @pytest.fixture(scope='session')
     def credentials(self):
@@ -50,8 +52,7 @@ class BaseCase:
         faker = Faker()
         start_time = time.time()
         fake_title = faker.lexify(text='?????? ??? ???')
-        name = str(start_time) + faker.numerify(text=f'{fake_title} ###%#%#%')
+        name = faker.numerify(text=f'{fake_title} %#%#%#%#%') + str(start_time)
         url = faker.image_url()
-        self.logger.info('Generate fake data for test')
         return name, url
 

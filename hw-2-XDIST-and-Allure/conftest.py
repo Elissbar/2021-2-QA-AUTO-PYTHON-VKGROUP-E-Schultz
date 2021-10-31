@@ -22,15 +22,13 @@ def config(request):
     return { 'browser': browser, 'url': url, 'debug_log': debug_log }
 
 
-def is_master(config):
-    if hasattr(config, 'workerinput'):
-        return False
-    return True
-
-
 def pytest_configure(config):
-    base_test_dir = 'tmp/tests'
-    if is_master:
+    if sys.platform.startswith('win'):
+        base_test_dir = 'C:\\tests'
+    else:
+        base_test_dir = 'tmp/tests'
+
+    if not hasattr(config, 'workerinput'):
         if os.path.exists(base_test_dir):
             shutil.rmtree(base_test_dir)
         os.makedirs(base_test_dir)
