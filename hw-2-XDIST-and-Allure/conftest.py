@@ -4,7 +4,6 @@ import logging
 import pytest
 import allure
 import shutil
-import sys
 import os
 
 
@@ -23,11 +22,7 @@ def config(request):
 
 
 def pytest_configure(config):
-    if sys.platform.startswith('win'):
-        base_test_dir = 'C:\\tests'
-    else:
-        base_test_dir = 'tmp/tests'
-
+    base_test_dir = os.path.join('tmp', 'tests')
     if not hasattr(config, 'workerinput'):
         if os.path.exists(base_test_dir):
             shutil.rmtree(base_test_dir)
@@ -54,14 +49,9 @@ def driver(config):
     browser.quit()
 
 
-@pytest.fixture(scope='session')
-def repo_root():
-    return os.path.abspath(os.path.join(__file__, os.pardir))
-
-
 @pytest.fixture(scope='function')
-def file_path(repo_root):
-    return os.path.join(repo_root, 'target.png')
+def file_path():
+    return os.path.join(os.path.dirname(__file__), "target.png")
 
 
 @pytest.fixture(scope='function')
@@ -110,6 +100,3 @@ def ui_report(driver, request, test_dir):
         if os.path.exists(log_file):
             with open(log_file, 'r') as f:
                 allure.attach(f.read(), 'test.log', attachment_type=allure.attachment_type.TEXT)
-
-
-

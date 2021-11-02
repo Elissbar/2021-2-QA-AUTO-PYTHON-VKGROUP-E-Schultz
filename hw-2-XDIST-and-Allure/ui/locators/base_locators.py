@@ -2,11 +2,13 @@ from selenium.webdriver.common.by import By
 
 
 class BasePageLocators:
-    segments = (By.XPATH, '//a[@href="/segments"]')
+    TABS = {
+        "segments": (By.XPATH, '//a[@href="/segments"]')
+    }
 
 
 class LoginPageLocators(BasePageLocators):
-    log_in = {
+    LOG_IN = {
         "log_in": (By.XPATH, '//div[contains(@class, "responseHead-module-button")]'),
         "email": (By.XPATH, '//input[@name="email"]'),
         "password": (By.XPATH, '//input[@name="password"]'),

@@ -11,35 +11,35 @@ class SegmentsPage(BasePage):
     def create_segment(self, name):
         self.logger.info(f'Creation segment with name: {name}')
         try:
-            self.find(self.locators.first_button).click()
+            self.find(self.locators.FIRST_BUTTON).click()
         except:
-            self.find(self.locators.create_segment).click()
-        finally:
-            self.click(self.locators.apps_and_games)
-            self.click(self.locators.checkbox)
-            self.click(self.locators.add_segment)
-            self.logger.info(f'Paste segment name: {name}')
-            name_segment = self.find(self.locators.name_segment)
-            self.clear_inputs(name_segment).send_keys(f'{name}')
-            self.logger.info(f'Creation segment')
-            self.click(self.locators.create_segment)
-            created_segment = self.find(self.locators.segment_link(name)).text
-            return created_segment
+            self.find(self.locators.CREATE_SEGMENT).click()
+        self.click(self.locators.APPS_AND_GAMES)
+        self.click(self.locators.CHECKBOX)
+        self.click(self.locators.ADD_SEGMENT)
+        self.logger.info(f'Paste segment name: {name}')
+        name_segment = self.find(self.locators.NAME_SEGMENT)
+        self.clear_inputs(name_segment).send_keys(f'{name}')
+        self.logger.info(f'Creation segment')
+        self.click(self.locators.CREATE_SEGMENT)
+        created_segment = self.find(self.locators.SEGMENT_LINK(name)).text
+        return created_segment
 
     @allure.step('Delete segment')
-    def delete_segment(self, name_segment):
-        self.logger.info(f'Delete segment with name: {name_segment}')
-        segment_link = self.find(self.locators.segment_link(name_segment)).get_attribute('href')
+    def delete_segment(self, name):
+        self.logger.info(f'Delete segment with name: {name}')
+        segment_link = self.find(self.locators.SEGMENT_LINK(name)).get_attribute('href')
         segment_id = re.findall(r'\d+', segment_link)[0]
         self.logger.info(f'Get id segment: {segment_id}')
-        self.click(self.locators.delete_segment(segment_id))
-        self.click(self.locators.confirm_remove)
+        self.click(self.locators.DELETE_SEGMENT(segment_id))
+        self.click(self.locators.CONFIRM_REMOVE)
+        self.logger.info(f'Segment is deleted')
         self.driver.refresh()
 
     @allure.step('Check segment')
-    def check_segment(self, name_segment):
+    def check_segment(self, name):
         try:
-            self.find(self.locators.segment_link(name_segment))
+            self.find(self.locators.SEGMENT_LINK(name))
             self.logger.info(f'Segment in page')
             return True
         except:

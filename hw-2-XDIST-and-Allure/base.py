@@ -3,6 +3,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 from _pytest.fixtures import FixtureRequest
 from ui.pages.base_page import BasePage
 from ui.pages.login_page import LoginPage
+from ui.pages.segments_page import SegmentsPage
 from faker import Faker
 import time
 import pytest
@@ -56,3 +57,7 @@ class BaseCase:
         url = faker.image_url()
         return name, url
 
+    @pytest.fixture(scope='function')
+    def get_page(self):
+        self.base_page.click(self.base_page.locators.TABS["segments"])
+        return SegmentsPage(driver=self.driver)

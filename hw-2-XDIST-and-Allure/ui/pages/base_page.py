@@ -32,12 +32,15 @@ class BasePage:
         action = ActionChains(self.driver)
         return action.move_to_element(element).perform()
 
+    def is_clickable(self, locator):
+        return self.wait().until(ES.element_to_be_clickable(locator))
+
     def click(self, locator):
         self.logger.info(f'Click on element: {locator}')
         for i in range(CLICK_RETRY):
             try:
                 self.find(locator)
-                elem = self.wait().until(ES.element_to_be_clickable(locator))
+                elem = self.is_clickable(locator)
                 self.move_to_element(elem)
                 elem.click()
                 return
@@ -45,12 +48,11 @@ class BasePage:
                 if i == CLICK_RETRY-1:
                     raise
 
-    @allure.step('Clear input')
     def clear_inputs(self, elem):
-        key = Keys.CONTROL
-        if platform == 'darwin':
-            key = Keys.COMMAND
-        elem.send_keys(key + 'a')
-        elem.send_keys(Keys.DELETE)
-        return elem
-
+        with allure.step(f'Clear input {elem}'):
+            key = Keys.CONTROL
+            if platform == 'darwin':
+                key = Keys.COMMAND
+            elem.send_keys(key + 'a')
+            elem.send_keys(Keys.DELETE)
+            return elem
