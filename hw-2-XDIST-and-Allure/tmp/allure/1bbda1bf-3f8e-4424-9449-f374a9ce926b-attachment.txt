@@ -1,0 +1,34 @@
+2021-11-06 14:49:53,350 - base.py - INFO: Get cookie
+2021-11-06 14:49:53,368 - base.py - INFO: Open browser
+2021-11-06 14:49:53,368 - base_page.py - INFO: BasePage page is opening
+2021-11-06 14:49:55,385 - base_page.py - INFO: LoginPage page is opening
+2021-11-06 14:49:55,386 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "responseHead-module-button")]')
+2021-11-06 14:49:55,521 - base_page.py - INFO: Find element: ('xpath', '//input[@name="email"]')
+2021-11-06 14:49:56,593 - base_page.py - INFO: Find element: ('xpath', '//input[@name="password"]')
+2021-11-06 14:49:56,659 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "authForm-module-button")]')
+2021-11-06 14:49:59,824 - base_page.py - INFO: CampaignPage page is opening
+2021-11-06 14:49:59,824 - campaign_page.py - INFO: Creating new campaign with URL: https://placekitten.com/248/85 and Name: QhVISx UVb BRM 5845896851636199393.3836744
+2021-11-06 14:49:59,825 - base_page.py - INFO: Click on element: ('xpath', '//a[@href="/campaign/new"]')
+2021-11-06 14:49:59,825 - base_page.py - INFO: Find element: ('xpath', '//a[@href="/campaign/new"]')
+2021-11-06 14:50:10,167 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@class, "button-module-blue")]')
+2021-11-06 14:50:10,168 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "button-module-blue")]')
+2021-11-06 14:50:10,208 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="b691e10e09bac59d6c7657d221fcd051", element="374282bd-0b50-43c4-9130-8e44597e4352")>
+2021-11-06 14:50:10,865 - campaign_page.py - INFO: Choose campaign with traffic type
+2021-11-06 14:50:10,865 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@class, "_traffic")]')
+2021-11-06 14:50:10,865 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "_traffic")]')
+2021-11-06 14:50:13,202 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="b691e10e09bac59d6c7657d221fcd051", element="deb64882-3713-42cb-8416-ae6c2c9e0561")>
+2021-11-06 14:50:13,543 - campaign_page.py - INFO: Paste url campaign
+2021-11-06 14:50:13,543 - base_page.py - INFO: Find element: ('xpath', '//input[contains(@class, "mainUrl-module-searchInput")]')
+2021-11-06 14:50:20,599 - campaign_page.py - INFO: Move to input with name
+2021-11-06 14:50:20,600 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="b691e10e09bac59d6c7657d221fcd051", element="180aa74e-a3ed-4896-b913-c5fb7ba80053")>
+2021-11-06 14:50:22,442 - campaign_page.py - INFO: Click on banner type
+2021-11-06 14:50:22,442 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@id, "patterns_banner")]/span')
+2021-11-06 14:50:22,442 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@id, "patterns_banner")]/span')
+2021-11-06 14:50:22,630 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="b691e10e09bac59d6c7657d221fcd051", element="fb2a62f9-5202-407d-acc1-616fd126cffc")>
+2021-11-06 14:50:22,966 - campaign_page.py - INFO: Move to input with name
+2021-11-06 14:50:24,246 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="b691e10e09bac59d6c7657d221fcd051", element="aba4ec76-5f7d-4836-b235-ec7851e1c3e6")>
+2021-11-06 14:50:24,732 - campaign_page.py - INFO: Remove previous images
+2021-11-06 14:50:24,732 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@class, "mediaLibrary-module-removeAllButtonText")]')
+2021-11-06 14:50:24,732 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "mediaLibrary-module-removeAllButtonText")]')
+2021-11-06 14:50:34,816 - campaign_page.py - INFO: Paste image campaign
+2021-11-06 14:50:34,816 - base_page.py - INFO: Find element: ('xpath', '//input[@data-test="image_240x400"]')

@@ -8,17 +8,20 @@ import os
 
 
 def pytest_addoption(parser):
-    parser.addoption("--browser", default="chrome")
     parser.addoption("--url", default="https://target.my.com/")
     parser.addoption('--debug_log', action='store_true')
+    parser.addoption("--selenoid", action='store_true')
 
 
 @pytest.fixture(scope='session')
 def config(request):
-    browser = request.config.getoption("--browser")
     url = request.config.getoption("--url")
     debug_log = request.config.getoption('--debug_log')
-    return { 'browser': browser, 'url': url, 'debug_log': debug_log }
+    if request.config.getoption('--selenoid'):
+        selenoid = "http://127.0.0.1:4444/wd/hub"
+    else:
+        selenoid = None
+    return { 'url': url, 'debug_log': debug_log, "selenoid": selenoid }
 
 
 def pytest_configure(config):
@@ -39,19 +42,45 @@ def test_dir(request):
 
 
 @pytest.fixture(scope='function')
-def driver(config):
-    os.environ['WDM_LOG_LEVEL'] = '0'
-    manager = ChromeDriverManager(version='latest')
-    browser = webdriver.Chrome(executable_path=manager.install())
-    browser.maximize_window()
-    browser.get(config['url'])
-    yield browser
-    browser.quit()
+def driver(config, get_driver):
+    get_driver.get(config['url'])
+    yield get_driver
+    get_driver.quit()
 
 
 @pytest.fixture(scope='function')
-def file_path():
-    return os.path.join(os.path.dirname(__file__), "target.png")
+def get_driver(config):
+    if config["selenoid"] is not None:
+        capabilities = {
+            "browserName": "chrome",
+            "browserVersion": "94.0",
+            "selenoid:options": {
+                "enableVNC": True,
+                "enableVideo": False
+            }
+        }
+        browser = webdriver.Remote(command_executor=config["selenoid"], desired_capabilities=capabilities)
+    else:
+        os.environ['WDM_LOG_LEVEL'] = '0'
+        manager = ChromeDriverManager(version='latest')
+        browser = webdriver.Chrome(executable_path=manager.install())
+
+    browser.maximize_window()
+    return browser
+
+
+# @pytest.fixture(scope='function')
+# def file_path():
+#     return os.path.join(os.path.dirname(__file__), "target.png")
+
+@pytest.fixture(scope='function')
+def file_path(repo_root):
+    return os.path.join(repo_root, "target.png")
+
+
+@pytest.fixture(scope='session')
+def repo_root():
+    return os.path.abspath(os.path.join(__file__, os.path.pardir))
 
 
 @pytest.fixture(scope='function')

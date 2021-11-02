@@ -1,0 +1,43 @@
+2021-11-06 14:18:24,242 - base.py - INFO: Get cookie
+2021-11-06 14:18:24,243 - base.py - INFO: Open browser
+2021-11-06 14:18:24,243 - base_page.py - INFO: BasePage page is opening
+2021-11-06 14:18:26,294 - base_page.py - INFO: LoginPage page is opening
+2021-11-06 14:18:26,296 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "responseHead-module-button")]')
+2021-11-06 14:18:26,405 - base_page.py - INFO: Find element: ('xpath', '//input[@name="email"]')
+2021-11-06 14:18:26,567 - base_page.py - INFO: Find element: ('xpath', '//input[@name="password"]')
+2021-11-06 14:18:26,655 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "authForm-module-button")]')
+2021-11-06 14:18:30,039 - base_page.py - INFO: Click on element: ('xpath', '//a[@href="/segments"]')
+2021-11-06 14:18:30,039 - base_page.py - INFO: Find element: ('xpath', '//a[@href="/segments"]')
+2021-11-06 14:18:30,075 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="57bdda6075e1ceb0ff8dd4cd0e787178", element="9ae57f49-d586-4c99-9830-648a3bfc9b4d")>
+2021-11-06 14:18:30,507 - base_page.py - INFO: SegmentsPage page is opening
+2021-11-06 14:18:30,508 - segments_page.py - INFO: Creation segment with name: SPRMha kNH Fnn 5713305541636197504.2635517
+2021-11-06 14:18:30,508 - base_page.py - INFO: Find element: ('xpath', '//a[@href="/segments/segments_list/new/"]')
+2021-11-06 14:18:31,271 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "js-create")]//div')
+2021-11-06 14:18:31,443 - base_page.py - INFO: Click on element: ('xpath', '//div[@data-class-name="TypeItemView"][8]')
+2021-11-06 14:18:31,443 - base_page.py - INFO: Find element: ('xpath', '//div[@data-class-name="TypeItemView"][8]')
+2021-11-06 14:18:31,488 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="57bdda6075e1ceb0ff8dd4cd0e787178", element="ff119ada-9968-4d01-954a-a0965557738b")>
+2021-11-06 14:18:31,786 - base_page.py - INFO: Click on element: ('xpath', "//input[contains(@class, 'adding-segments-source')]")
+2021-11-06 14:18:31,786 - base_page.py - INFO: Find element: ('xpath', "//input[contains(@class, 'adding-segments-source')]")
+2021-11-06 14:18:31,823 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="57bdda6075e1ceb0ff8dd4cd0e787178", element="27832db4-604b-4f5c-87f8-02165896619c")>
+2021-11-06 14:18:32,150 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@class, "adding-segments-modal__btn-wrap")]//*[contains(@class, "button_submit")]')
+2021-11-06 14:18:32,150 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "adding-segments-modal__btn-wrap")]//*[contains(@class, "button_submit")]')
+2021-11-06 14:18:32,185 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="57bdda6075e1ceb0ff8dd4cd0e787178", element="c668a801-2af5-46a7-9085-38a7c04da048")>
+2021-11-06 14:18:32,491 - segments_page.py - INFO: Paste segment name: SPRMha kNH Fnn 5713305541636197504.2635517
+2021-11-06 14:18:32,491 - base_page.py - INFO: Find element: ('xpath', '//div[@class="js-segment-name"]//input')
+2021-11-06 14:18:32,626 - segments_page.py - INFO: Creation segment
+2021-11-06 14:18:32,626 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@class, "js-create")]//div')
+2021-11-06 14:18:32,626 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "js-create")]//div')
+2021-11-06 14:18:32,656 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="57bdda6075e1ceb0ff8dd4cd0e787178", element="0e74f9ed-a628-4b99-a3ea-445eb7abc5e8")>
+2021-11-06 14:18:32,956 - base_page.py - INFO: Find element: ('xpath', '//a[@title="SPRMha kNH Fnn 5713305541636197504.2635517"]')
+2021-11-06 14:18:33,496 - base_page.py - INFO: Find element: ('xpath', '//a[@title="SPRMha kNH Fnn 5713305541636197504.2635517"]')
+2021-11-06 14:18:33,504 - segments_page.py - INFO: Segment in page
+2021-11-06 14:18:35,505 - segments_page.py - INFO: Delete segment with name: SPRMha kNH Fnn 5713305541636197504.2635517
+2021-11-06 14:18:35,505 - base_page.py - INFO: Find element: ('xpath', '//a[@title="SPRMha kNH Fnn 5713305541636197504.2635517"]')
+2021-11-06 14:18:35,521 - segments_page.py - INFO: Get id segment: 1406042
+2021-11-06 14:18:35,521 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@data-test, "remove-1406042")]//span')
+2021-11-06 14:18:35,521 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@data-test, "remove-1406042")]//span')
+2021-11-06 14:18:35,550 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="57bdda6075e1ceb0ff8dd4cd0e787178", element="c8d10268-1862-42ea-a20a-db0976811534")>
+2021-11-06 14:18:35,903 - base_page.py - INFO: Click on element: ('xpath', '//button[contains(@class, "button_confirm-remove")]/div')
+2021-11-06 14:18:35,903 - base_page.py - INFO: Find element: ('xpath', '//button[contains(@class, "button_confirm-remove")]/div')
+2021-11-06 14:18:35,942 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="57bdda6075e1ceb0ff8dd4cd0e787178", element="24f77cf8-d203-4246-9b25-2d161fb234ac")>
+2021-11-06 14:18:36,234 - segments_page.py - INFO: Segment is deleted

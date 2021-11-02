@@ -27,14 +27,12 @@ class BaseCase:
         self.logger.info('Open browser')
         self.base_page = BasePage(driver=driver)
 
-
     @pytest.fixture(scope='session')
     def credentials(self):
         with open('credentials.txt', "r") as f:
             login = f.readline().strip()
             password = f.readline().strip()
             return login, password
-
 
     @pytest.fixture(scope='session')
     def cookies(self, config, credentials):

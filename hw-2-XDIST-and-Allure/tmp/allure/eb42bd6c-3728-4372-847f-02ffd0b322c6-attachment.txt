@@ -1,0 +1,43 @@
+2021-11-06 14:08:46,649 - base.py - INFO: Get cookie
+2021-11-06 14:08:46,649 - base.py - INFO: Open browser
+2021-11-06 14:08:46,649 - base_page.py - INFO: BasePage page is opening
+2021-11-06 14:08:48,667 - base_page.py - INFO: LoginPage page is opening
+2021-11-06 14:08:48,668 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "responseHead-module-button")]')
+2021-11-06 14:08:48,741 - base_page.py - INFO: Find element: ('xpath', '//input[@name="email"]')
+2021-11-06 14:08:48,856 - base_page.py - INFO: Find element: ('xpath', '//input[@name="password"]')
+2021-11-06 14:08:48,915 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "authForm-module-button")]')
+2021-11-06 14:08:52,257 - base_page.py - INFO: Click on element: ('xpath', '//a[@href="/segments"]')
+2021-11-06 14:08:52,257 - base_page.py - INFO: Find element: ('xpath', '//a[@href="/segments"]')
+2021-11-06 14:08:52,317 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="3931972f7386aab0965fd3df01be7670", element="ac5a1e16-ad54-4498-8a78-065b3233273a")>
+2021-11-06 14:08:52,933 - base_page.py - INFO: SegmentsPage page is opening
+2021-11-06 14:08:52,933 - segments_page.py - INFO: Creation segment with name: GcNjcj CGH ymY 3746666341636196926.664647
+2021-11-06 14:08:52,933 - base_page.py - INFO: Find element: ('xpath', '//a[@href="/segments/segments_list/new/"]')
+2021-11-06 14:08:54,021 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "js-create")]//div')
+2021-11-06 14:08:54,150 - base_page.py - INFO: Click on element: ('xpath', '//div[@data-class-name="TypeItemView"][8]')
+2021-11-06 14:08:54,150 - base_page.py - INFO: Find element: ('xpath', '//div[@data-class-name="TypeItemView"][8]')
+2021-11-06 14:08:54,186 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="3931972f7386aab0965fd3df01be7670", element="6d1a6644-517e-4f41-b3ee-6307823a8483")>
+2021-11-06 14:08:54,491 - base_page.py - INFO: Click on element: ('xpath', "//input[contains(@class, 'adding-segments-source')]")
+2021-11-06 14:08:54,492 - base_page.py - INFO: Find element: ('xpath', "//input[contains(@class, 'adding-segments-source')]")
+2021-11-06 14:08:54,530 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="3931972f7386aab0965fd3df01be7670", element="b48acd72-8bc4-4dbd-9177-dc1962ee815c")>
+2021-11-06 14:08:54,849 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@class, "adding-segments-modal__btn-wrap")]//*[contains(@class, "button_submit")]')
+2021-11-06 14:08:54,849 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "adding-segments-modal__btn-wrap")]//*[contains(@class, "button_submit")]')
+2021-11-06 14:08:54,885 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="3931972f7386aab0965fd3df01be7670", element="c5805fac-8926-4743-88e2-0547cccba587")>
+2021-11-06 14:08:55,201 - segments_page.py - INFO: Paste segment name: GcNjcj CGH ymY 3746666341636196926.664647
+2021-11-06 14:08:55,201 - base_page.py - INFO: Find element: ('xpath', '//div[@class="js-segment-name"]//input')
+2021-11-06 14:08:55,361 - segments_page.py - INFO: Creation segment
+2021-11-06 14:08:55,361 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@class, "js-create")]//div')
+2021-11-06 14:08:55,361 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "js-create")]//div')
+2021-11-06 14:08:55,391 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="3931972f7386aab0965fd3df01be7670", element="2657b234-2e7e-495b-8d0d-0f5424cca971")>
+2021-11-06 14:08:55,707 - base_page.py - INFO: Find element: ('xpath', '//a[@title="GcNjcj CGH ymY 3746666341636196926.664647"]')
+2021-11-06 14:08:58,268 - segments_page.py - INFO: Delete segment with name: GcNjcj CGH ymY 3746666341636196926.664647
+2021-11-06 14:08:58,269 - base_page.py - INFO: Find element: ('xpath', '//a[@title="GcNjcj CGH ymY 3746666341636196926.664647"]')
+2021-11-06 14:08:58,287 - segments_page.py - INFO: Get id segment: 1406034
+2021-11-06 14:08:58,287 - base_page.py - INFO: Click on element: ('xpath', '//div[contains(@data-test, "remove-1406034")]//span')
+2021-11-06 14:08:58,287 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@data-test, "remove-1406034")]//span')
+2021-11-06 14:08:58,315 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="3931972f7386aab0965fd3df01be7670", element="fd6c010a-4b73-43f2-92c0-b01454e96562")>
+2021-11-06 14:08:58,621 - base_page.py - INFO: Click on element: ('xpath', '//button[contains(@class, "button_confirm-remove")]/div')
+2021-11-06 14:08:58,622 - base_page.py - INFO: Find element: ('xpath', '//button[contains(@class, "button_confirm-remove")]/div')
+2021-11-06 14:08:58,656 - base_page.py - INFO: Move to element: <selenium.webdriver.remote.webelement.WebElement (session="3931972f7386aab0965fd3df01be7670", element="aa5c6411-c38a-4657-88b7-c45a4fbd23d2")>
+2021-11-06 14:08:58,950 - segments_page.py - INFO: Segment is deleted
+2021-11-06 14:08:58,958 - base_page.py - INFO: Find element: ('xpath', '//a[@title="GcNjcj CGH ymY 3746666341636196926.664647"]')
+2021-11-06 14:09:09,100 - segments_page.py - INFO: Segment not in page

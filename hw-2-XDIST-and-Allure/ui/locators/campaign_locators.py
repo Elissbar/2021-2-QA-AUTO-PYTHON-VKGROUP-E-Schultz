@@ -20,7 +20,7 @@ class CampaignPageLocators:
     SAVE_IMAGE = (By.XPATH, '//input[@type="submit"]')
     CREATE_A_CAMPAIGN = (By.XPATH, '//button[@data-service-readonly="true"]')
 
-    SELECT_STATUS_CAMPAIGN = (By.XPATH, '//span[.="Active campaigns"]')
+    SELECT_STATUS_CAMPAIGN = (By.XPATH, '//div[contains(@class, "statusFilter-module-filterButtonWrapper")]//div[contains(@class, "select-module-item")]')
     ACTIVE_CAMPAIGNS = (By.XPATH, '//li[@data-test="0"]')
 
     CAMPAIGN_LINK = lambda self, name: (By.XPATH, f'//a[@title="{name}"]')
