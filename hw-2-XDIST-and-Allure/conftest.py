@@ -69,10 +69,6 @@ def get_driver(config):
     return browser
 
 
-# @pytest.fixture(scope='function')
-# def file_path():
-#     return os.path.join(os.path.dirname(__file__), "target.png")
-
 @pytest.fixture(scope='function')
 def file_path(repo_root):
     return os.path.join(repo_root, "target.png")

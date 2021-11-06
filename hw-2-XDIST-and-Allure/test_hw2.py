@@ -1,5 +1,3 @@
-import time
-
 from ui.pages.login_page import LoginPage
 from ui.pages.campaign_page import CampaignPage
 from _pytest.fixtures import FixtureRequest
@@ -14,14 +12,12 @@ class TestInvalidCase(BaseCase):
 
     @allure.story('Negative tests')
     def test_invalid_login(self):
-        time.sleep(2)
         login_page = LoginPage(self.driver)
         login_page.login(login='qawsed@gmail.ru', password='kirito4789')
         assert self.driver.current_url != "https://target.my.com/dashboard"
 
     @allure.story('Negative tests')
     def test_invalid_password(self):
-        time.sleep(2)
         login_page = LoginPage(self.driver)
         login_page.login(login="allen-2002@mail.ru", password=' ')
         assert self.driver.current_url != "https://target.my.com/dashboard"
@@ -29,40 +25,25 @@ class TestInvalidCase(BaseCase):
 
 @pytest.mark.UI
 class TestCreation(BaseCase):
-    authorize = False
+    authorize = True
 
     @allure.story('Positive tests')
     def test_create_campaign(self, file_path, fake_data):
-        time.sleep(2)
-        login_page = LoginPage(self.driver)
-        login_page.login(login='allen-2002@mail.ru', password='kirito4789')
-        time.sleep(2)
         campaign = CampaignPage(self.driver)
         campaign_name = campaign.create_campaign(file_path, *fake_data)
         assert campaign_name in self.driver.page_source
-        time.sleep(2)
         campaign.delete_campaign(campaign_name)
 
     @allure.story('Positive tests')
     def test_create_segment(self, request: FixtureRequest, fake_data):
-        time.sleep(2)
-        login_page = LoginPage(self.driver)
-        login_page.login(login='allen-2002@mail.ru', password='kirito4789')
-        time.sleep(2)
         segments_page = request.getfixturevalue('get_page')
         link_text = segments_page.create_segment(name=fake_data[0])
         assert segments_page.check_segment(link_text)
-        time.sleep(2)
         segments_page.delete_segment(link_text)
 
     @allure.story('Positive tests')
     def test_delete_segment(self, request: FixtureRequest, fake_data):
-        time.sleep(2)
-        login_page = LoginPage(self.driver)
-        login_page.login(login='allen-2002@mail.ru', password='kirito4789')
-        time.sleep(2)
         segments_page = request.getfixturevalue('get_page')
         link_text = segments_page.create_segment(name=fake_data[0])
-        time.sleep(2)
         segments_page.delete_segment(link_text)
         assert not segments_page.check_segment(link_text)

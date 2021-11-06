@@ -1,8 +1,0 @@
-2021-11-06 14:07:27,306 - base.py - INFO: Get cookie
-2021-11-06 14:07:27,306 - base.py - INFO: Open browser
-2021-11-06 14:07:27,306 - base_page.py - INFO: BasePage page is opening
-2021-11-06 14:07:29,321 - base_page.py - INFO: LoginPage page is opening
-2021-11-06 14:07:29,321 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "responseHead-module-button")]')
-2021-11-06 14:07:29,464 - base_page.py - INFO: Find element: ('xpath', '//input[@name="email"]')
-2021-11-06 14:07:29,638 - base_page.py - INFO: Find element: ('xpath', '//input[@name="password"]')
-2021-11-06 14:07:29,723 - base_page.py - INFO: Find element: ('xpath', '//div[contains(@class, "authForm-module-button")]')
