@@ -1,5 +1,3 @@
-import pytest
-from models.model import *
 from base import Base
 from parse.parse_logs import *
 

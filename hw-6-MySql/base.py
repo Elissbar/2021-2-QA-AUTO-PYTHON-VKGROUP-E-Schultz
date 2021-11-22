@@ -8,10 +8,10 @@ from parse.parse_logs import *
 class Base:
 
     @pytest.fixture(scope='function', autouse=True)
-    def setup(self, mysql_orm_client, file_to_log):
+    def setup(self, mysql_orm_client, nginx_log):
         self.mysql: MysqlORMClient = mysql_orm_client
         self.mysql_builder: MysqlORMBuilder = MysqlORMBuilder(self.mysql)
-        self.path_to_log = file_to_log
+        self.path_to_log = nginx_log
 
     def get_count_requests(self):
         self.mysql_builder.create_count_of_requests(self.path_to_log)

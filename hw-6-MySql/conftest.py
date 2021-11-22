@@ -26,7 +26,7 @@ def mysql_orm_client(request) -> MysqlORMClient:
 
 
 @pytest.fixture(scope='session')
-def file_to_log():
+def nginx_log():
     return os.path.abspath(os.path.join(os.path.dirname(__file__), 'parse/access.log'))
 
 

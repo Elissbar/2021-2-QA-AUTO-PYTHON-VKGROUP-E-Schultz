@@ -1,8 +1,6 @@
 from models.model import *
 from parse.parse_logs import *
 
-# print(count_requests_with_type())
-
 
 class MysqlORMBuilder:
 
@@ -13,7 +11,6 @@ class MysqlORMBuilder:
         count_requests = CountOfRequests(
             count=return_count_requests(path)
         )
-
         self.client.session.add(count_requests)
         self.client.session.commit()
         return count_requests
@@ -23,7 +20,6 @@ class MysqlORMBuilder:
             type=type,
             count=count
         )
-
         self.client.session.add(top_requests)
         self.client.session.commit()
         return top_requests
