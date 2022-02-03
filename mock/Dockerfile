@@ -4,7 +4,7 @@ ADD requerements.txt /requerements.txt
 
 ADD mock_vk_id.py /code/mock_vk_id.py
 
-RUN pip3 install -r /req.txt && rm -f /req.txt
+RUN pip3 install -r /requerements.txt && rm -f /requerements.txt
 
 EXPOSE 5000
 
