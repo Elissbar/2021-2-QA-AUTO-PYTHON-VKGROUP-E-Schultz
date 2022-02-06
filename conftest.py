@@ -26,7 +26,7 @@ def config(request):
 
 
 def pytest_configure(config):
-    test_dir = os.path.join('tmp', 'test')
+    test_dir = os.path.join('tmp', 'test' )
     if os.path.exists(test_dir):
         shutil.rmtree(test_dir)
     os.makedirs(test_dir)
