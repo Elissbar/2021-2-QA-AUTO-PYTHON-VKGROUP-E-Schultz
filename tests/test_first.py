@@ -88,4 +88,4 @@ class TestMainPage(BaseCase):
     )
     def test_open_link_in_navbar(self, title, urls):
         self.main_page.open_page(title)
-        time.sleep(10)
+        time.sleep(15)
