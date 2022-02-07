@@ -13,7 +13,7 @@ import os
 
 def pytest_addoption(parser):
     parser.addoption("--url", default="http://0.0.0.0:8080")
-    parser.addoption("--mock", default="http://172.18.0.2:5000")
+    parser.addoption("--mock", default="http://172.18.0.3:5000/")
     parser.addoption("--debug_log", action='store_true')
     parser.addoption("--mysql", default="127.0.0.1:3306")
 

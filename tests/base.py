@@ -28,7 +28,7 @@ class BaseCase:
             for cookie in cookies:
                 self.driver.add_cookie({'name': cookie['name'], 'value': cookie['value']})
             self.driver.refresh()
-            self.api_client = ApiClient(host=config['url'], cookies=cookies[0], agent=agent)
+            self.api_client = ApiClient(host=config['url'], cookies=cookies, agent=agent)
 
         self.login_page = LoginPage(self.driver)
         self.main_page = MainPage(self.driver)
@@ -36,24 +36,33 @@ class BaseCase:
     @pytest.fixture(scope='session')
     def register_user(self, config):
         user = Faker().profile()
+        username = f'{user["username"]}{Faker().bothify(text="#?#?##")}'[0:16]
         password = Faker().bothify(text='???#??##')
-        user_id = requests.post(f'{config["mock"]}/add_user/{user["username"]}').content
+        user_id = requests.post(f'{config["mock"]}/add_user/{username}').content
         os.environ['WDM_LOG_LEVEL'] = '0'
         manager = ChromeDriverManager(version='latest')
         driver = webdriver.Chrome(executable_path=manager.install())
         driver.get(config['url'])
         login_page = LoginPage(driver)
-        login_page.registration_user(username=user['username'], password=password, email=user['mail'])
+        login_page.registration_user(username=username, password=password, email=user['mail'])
         cookies = driver.get_cookies()
         agent = driver.execute_script("return navigator.userAgent")
         driver.quit()
-        return cookies, agent, (user['username'], password, user_id)
+        return cookies, agent, (username, password, user_id)
 
     @pytest.fixture(scope='function')
     def create_user(self, config):
         user = self.faker.profile()
         password = self.faker.bothify(text='???#??##')
-        username = user['username']
+        username = f'{user["username"]}{self.faker.bothify(text="#?#?##")}'[0:16]
         email = user['mail']
         user_id = requests.post(f'{config["mock"]}/add_user/{username}').content
         return username, password, email, user_id
+
+    def check_url(self, data: list):
+        windows = self.driver.window_handles
+        assertions = []
+        for window in windows[1:]:
+            self.driver.switch_to.window(window)
+            assertions.append(self.driver.current_url in data)
+        return assertions

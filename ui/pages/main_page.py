@@ -10,13 +10,15 @@ class MainPage(BasePage):
     locators = MainPageLocators()
 
     def open_page(self, title):
-        pass
-        # action = ActionChains(self.driver)
-        # locator = self.locators.navbar[title]
-        # parent_locator = (locator[0], locator[1] + '/..//li/a')
-        # self.find(self.locators.navbar[title]).send_keys(Keys.NULL)
-        # links = self.driver.find_elements(*parent_locator)
-        # for link in links:
-        #     action.key_down(Keys.CONTROL).click(link).key_up(Keys.CONTROL).perform()
+        elem = self.find(self.locators.navbar[title])
+        locator = self.locators.navbar[title]
+        parent_locator = (locator[0], locator[1] + '/..//li/a')
+        links = self.driver.find_elements(*parent_locator)
+        if not links:
+            elem.send_keys(Keys.LEFT_CONTROL + Keys.ENTER)
+            return
+        elem.send_keys(Keys.NULL)
+        for link in links:
+            link.send_keys(Keys.LEFT_CONTROL + Keys.ENTER)
 
 

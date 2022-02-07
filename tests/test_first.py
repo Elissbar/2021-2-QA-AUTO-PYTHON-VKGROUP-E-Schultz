@@ -5,6 +5,17 @@ import time
 import pytest
 
 
+# @pytest.mark.api
+# class TestApi(BaseCase):
+#
+#     only_auth = True
+#
+#     def test_add_user(self):
+#         request = self.api_client.post_add_user(username='testuser', password='testuser', email='qwer@qwer.ru')
+#         print(request.status_code)
+#         print(request.content)
+
+
 @pytest.mark.reg
 class TestRegistration(BaseCase):
 
@@ -64,28 +75,28 @@ class TestMainPage(BaseCase):
 
     only_auth = True
 
-    # @pytest.mark.parametrize(
-    #     "title, url",
-    #     [
-    #         ('api', 'https://en.wikipedia.org/wiki/API'),
-    #         ('foi', 'https://www.popularmechanics.com/technology/infrastructure/a29666802/future-of-the-internet/'),
-    #         ('smtp', 'https://ru.wikipedia.org/wiki/SMTP')
-    #     ])
-    # def test_open_link(self, title, url):
-    #     self.main_page.click(self.main_page.locators.icons[title])
-    #     windows = self.driver.window_handles
-    #     self.driver.switch_to.window(windows[1])
-    #     assert self.driver.current_url == url
+    @pytest.mark.parametrize(
+        "title, url",
+        [
+            ('api', 'https://en.wikipedia.org/wiki/API'),
+            ('foi', 'https://www.popularmechanics.com/technology/infrastructure/a29666802/future-of-the-internet/'),
+            ('smtp', 'https://ru.wikipedia.org/wiki/SMTP')
+        ])
+    def test_open_link(self, title, url):
+        self.main_page.click(self.main_page.locators.icons[title])
+        windows = self.driver.window_handles
+        self.driver.switch_to.window(windows[1])
+        assert self.driver.current_url == url
 
     @pytest.mark.parametrize(
         "title, urls",
         [
-            # ('home', ['http://0.0.0.0:8080/welcome/']),
-            # ('python', ['https://en.wikipedia.org/wiki/History_of_Python', 'https://flask.palletsprojects.com/en/1.1.x/#']),
-            # ('linux', ['https://getfedora.org/ru/workstation/download/']),
+            ('home', ['http://0.0.0.0:8080/welcome/']),
+            ('python', ['https://en.wikipedia.org/wiki/History_of_Python', 'https://flask.palletsprojects.com/en/1.1.x/#']),
+            ('linux', ['https://getfedora.org/ru/workstation/download/']),
             ('network', ['https://www.wireshark.org/news/', 'https://www.wireshark.org/#download', 'https://hackertarget.com/tcpdump-examples/'])
         ]
     )
     def test_open_link_in_navbar(self, title, urls):
         self.main_page.open_page(title)
-        time.sleep(15)
+        assert all(self.check_url(data=urls))
