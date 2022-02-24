@@ -1,5 +1,5 @@
-from ui.pages.base_page import BasePage
-from ui.locators.login_page import LoginPageLocators
+from local_code.ui.pages.base_page import BasePage
+from local_code.ui.locators.login_page import LoginPageLocators
 import allure
 
 

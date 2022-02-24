@@ -1,19 +1,45 @@
 from base import BaseCase
 from selenium.webdriver.support import expected_conditions as ES
 import json
-import time
 import pytest
 
 
-# @pytest.mark.api
-# class TestApi(BaseCase):
-#
-#     only_auth = True
-#
-#     def test_add_user(self):
-#         request = self.api_client.post_add_user(username='testuser', password='testuser', email='qwer@qwer.ru')
-#         print(request.status_code)
-#         print(request.content)
+@pytest.mark.api
+class TestApi(BaseCase):
+
+    only_auth = True
+
+    def test_delete_user(self, create_user):
+        user = create_user
+        self.login_page.click(self.login_page.locators.log_out)
+        self.login_page.registration_user(*user[:-1])
+        assert self.api_client.get_delete(username=user[0]).status_code == 204
+
+    def test_add_user(self, create_user):
+        user = create_user[:-1]
+        assert self.api_client.post_add_user(*user).status_code == 201
+
+    def test_app_state(self):
+        assert json.loads(self.api_client.get_app_state().content)["status"] == "ok"
+
+    def test_block_user(self, create_user):
+        user = create_user
+        self.login_page.click(self.login_page.locators.log_out)
+        self.login_page.registration_user(*user[:-1])
+        self.api_client.get_block_user(username=user[0])
+        query = f'select access from test_users where username="{user[0]}";'
+        access_state = self.mysql.execute_query(query=query)
+        assert access_state[0][0] == 0
+
+    def test_unblock_user(self, create_user):
+        user = create_user
+        self.login_page.click(self.login_page.locators.log_out)
+        self.login_page.registration_user(*user[:-1])
+        self.api_client.get_block_user(username=user[0])
+        self.api_client.get_unblock_user(username=user[0])
+        query = f'select access from test_users where username="{user[0]}";'
+        access_state = self.mysql.execute_query(query=query)
+        assert access_state[0][0] == 1
 
 
 @pytest.mark.reg
@@ -91,7 +117,7 @@ class TestMainPage(BaseCase):
     @pytest.mark.parametrize(
         "title, urls",
         [
-            ('home', ['http://0.0.0.0:8080/welcome/']),
+            ('home', ['http://0.0.0.0:8081/welcome/']),
             ('python', ['https://en.wikipedia.org/wiki/History_of_Python', 'https://flask.palletsprojects.com/en/1.1.x/#']),
             ('linux', ['https://getfedora.org/ru/workstation/download/']),
             ('network', ['https://www.wireshark.org/news/', 'https://www.wireshark.org/#download', 'https://hackertarget.com/tcpdump-examples/'])

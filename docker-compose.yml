@@ -1,6 +1,7 @@
 version: '2.1'
 
 services:
+
   mysql:
     environment:
       MYSQL_ROOT_PASSWORD: root
@@ -9,7 +10,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /home/eduard/Desktop/finall_project/sql:/docker-entrypoint-initdb.d
+      - /home/eduard/Desktop/finall_project/configuration/sql:/docker-entrypoint-initdb.d
     healthcheck:
       test: [ "CMD", "mysqladmin", "-uroot", "-proot", "ping", "-h", "mysql" ]
       timeout: 1s
@@ -22,26 +23,15 @@ services:
   myapp:
     image: "myapp"
     volumes:
-      - /home/eduard/Desktop/finall_project/config_app/config:/tmp/conf
+      - /home/eduard/Desktop/finall_project/configuration/config:/tmp/conf
     ports:
-      - "8080:8080"
+      - "8081:8081"
     entrypoint: "/app/myapp --config=/tmp/conf"
     depends_on:
       mysql:
         condition: service_healthy
       vk_mock:
         condition: service_started
-
-#  myapp_proxy:
-#    image: "nginx:stable"
-#    volumes:
-#      - /home/eduard/default.conf:/etc/nginx/conf.d/default.conf
-##      - /home/eduard/Desktop/finall_project/nginx_conf/default.conf:/etc/nginx/nginx.conf
-#    ports:
-#      - "8070:8070"
-#    depends_on:
-#      myapp:
-#        condition: service_started
 
 
 

@@ -1,8 +1,6 @@
-from ui.pages.base_page import BasePage
-from ui.locators.main_page import MainPageLocators
-from selenium.webdriver.common.action_chains import ActionChains
+from local_code.ui.pages.base_page import BasePage
+from local_code.ui.locators.main_page import MainPageLocators
 from selenium.webdriver.common.keys import Keys
-import allure
 
 
 class MainPage(BasePage):

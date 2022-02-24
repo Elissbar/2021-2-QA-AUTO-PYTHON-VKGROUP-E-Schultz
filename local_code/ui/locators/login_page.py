@@ -22,3 +22,4 @@ class LoginPageLocators:
     }
 
     error_message = (By.XPATH, '//*[@id="flash"]')
+    log_out = (By.XPATH, '//*[@href="/logout"]')

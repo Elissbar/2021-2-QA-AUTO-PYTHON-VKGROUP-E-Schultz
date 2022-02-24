@@ -11,7 +11,7 @@ class ApiClient:
         self.agent = agent
         self.session = requests.Session()
         self.session.cookies.set('session', cookies[0]['value'])
-        self.session.headers.setdefault("User-Agent", self.agent)
+        # self.session.headers.setdefault("User-Agent", self.agent)
 
     def post_login(self, username, passwd):
         headers = {"User-Agent": self.agent}
@@ -26,24 +26,28 @@ class ApiClient:
 
     def get_delete(self, username):
         url = f'/api/del_user/{username}'
-        resp = self.session.get(urljoin(self.host, url), headers={"User-Agent": self.agent})
+        resp = self.session.get(urljoin(self.host, url))
         return resp
 
     def post_add_user(self, username, password, email):
-        url = '/api/add_user'
+        headers = {'Content-type': 'application/json'}
         data = {
             "username": username,
             "password": password,
             "email": email,
         }
-        print(self.session.cookies)
-        resp = self.session.post(urljoin(self.host, url), data=data)
+        resp = self.session.post(f'{self.host}/api/add_user', headers=headers, data=json.dumps(data))
         return resp
-        # POST http://<APP_HOST>:<APP_PORT>/api/add_user
-        # Content-Type: application/json
-        # Body:
-        # {
-        #    "username": "<username>",
-        #    "password": "<password>",
-        #    "email": "<email>"
-        # }
+
+    def get_block_user(self, username):
+        url = f'/api/block_user/{username}'
+        return self.session.get(urljoin(self.host, url))
+
+    def get_unblock_user(self, username):
+        url = f'/api/accept_user/{username}'
+        return self.session.get(urljoin(self.host, url))
+
+    def get_app_state(self):
+        url = f'/status'
+        return self.session.get(urljoin(self.host, url))
+
