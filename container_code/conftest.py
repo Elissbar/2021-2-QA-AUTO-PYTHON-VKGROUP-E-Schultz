@@ -1,6 +1,6 @@
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
-from local_code.orm.client import MySQLClient
+from orm.client import MySQLClient
 import pytest
 import logging
 import shutil
@@ -9,10 +9,11 @@ import os
 
 
 def pytest_addoption(parser):
-    parser.addoption("--url", default="http://0.0.0.0:8081/")
-    parser.addoption("--mock", default="http://172.18.0.3:5000/")
+    parser.addoption("--url", default="myapp:8081")
+    # parser.addoption("--url", default="https://www.google.com/")
+    parser.addoption("--mock", default="vk_mock:5000")
     parser.addoption("--debug_log", action='store_true')
-    parser.addoption("--mysql", default="127.0.0.1:3306")
+    parser.addoption("--mysql", default="mysql:3306")
     parser.addoption("--selenoid", action='store_true')
 
 
@@ -22,12 +23,12 @@ def config(request):
     mock = request.config.getoption("--mock")
     mysql = request.config.getoption("--mysql")
     debug_log = request.config.getoption("--debug_log")
-    selenoid = "http://127.0.0.1:4444/wd/hub" if request.config.getoption('--selenoid') else None
+    selenoid = "selenoid:4444/wd/hub" if request.config.getoption('--selenoid') else None
     return { 'url': url, 'mock': mock, 'mysql': mysql, 'debug_log': debug_log, "selenoid": selenoid }
 
 
 def pytest_configure(config):
-    mysql_client = MySQLClient(host='127.0.0.1:3306', db='TEST')
+    mysql_client = MySQLClient(host='mysql:3306', db='TEST')
     mysql_client.connect()
     config.mysql_client = mysql_client
     test_dir = os.path.join('tmp', 'test')
@@ -72,13 +73,15 @@ def get_driver(config):
         capabilities = {
             "browserName": "chrome",
             "browserVersion": "97.0",
+            'additionalNetworks': ["selenoid"],
             # "applicationContainers": [f"{config['url']}:myapp"],
             "selenoid:options": {
                 "enableVNC": True,
-                "enableVideo": False
+                "enableVideo": True
             }
         }
         browser = webdriver.Remote(command_executor=config["selenoid"], desired_capabilities=capabilities)
+        # browser = webdriver.Remote(command_executor=config['url'], desired_capabilities=capabilities)
     else:
         os.environ['WDM_LOG_LEVEL'] = '0'
         manager = ChromeDriverManager(version='latest')

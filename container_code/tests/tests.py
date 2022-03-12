@@ -5,13 +5,13 @@ import pytest
 import time
 
 
-@pytest.mark.test
-class TestTest(BaseCase):
-
-    only_auth = False
-
-    def test_google(self):
-        time.sleep(20)
+# @pytest.mark.test
+# class TestTest(BaseCase):
+#
+#     only_auth = False
+#
+#     def test_google(self):
+#         time.sleep(20)
 
 
 @pytest.mark.api

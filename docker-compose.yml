@@ -1,6 +1,30 @@
 version: '2.1'
 
+networks:
+  default:
+    name: "selenoid"
+    external: false
+
+
 services:
+
+  selenoid:
+    image: aerokube/selenoid:latest
+    volumes:
+      - /home/eduard/Desktop/finall_project/selenoid/browsers.json:/etc/selenoid/browsers.json
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "4444:4444"
+    command: ["-conf", "/etc/selenoid/browsers.json"]
+
+  selenoid-ui:
+    image: "aerokube/selenoid-ui"
+    links:
+      - selenoid
+    ports:
+      - "8080:8080"
+    command: [ "--selenoid-uri", "http://selenoid:4444" ]
+
 
   mysql:
     environment:
@@ -33,5 +57,13 @@ services:
       vk_mock:
         condition: service_started
 
+#  tests:
+#    image: 'tests:latest'
+#    build: ./container_code
+#    working_dir: /code
+#    entrypoint: /bin/sh pytest -s -l -v /code/tests/tests.py
+#    depends_on:
+#      myapp:
+#        condition: service_started
 
 
