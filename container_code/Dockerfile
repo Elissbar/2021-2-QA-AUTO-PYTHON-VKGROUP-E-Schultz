@@ -9,6 +9,6 @@ ADD conftest.py /code
 
 RUN pip3 install -r /requerements.txt && rm -f /requerements.txt
 RUN ls -la /code
-#RUN pytest -s -l -v /code/tests/tests.py
+RUN pytest -s -l -v /code/tests/tests.py
 
 
